@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #03060c;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "Segoe UI",
+    sans-serif;
+}
+
+::selection {
+  background: rgba(103, 232, 249, 0.28);
+  color: white;
+}
+
+@layer components {
+  .glass-panel {
+    @apply border border-white/10 bg-white/[0.065] shadow-panel shadow-black/30 backdrop-blur-2xl;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 28px 90px rgba(0, 0, 0, 0.36);
+  }
+
+  .field {
+    @apply w-full rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-200/45 focus:bg-white/[0.09] focus:shadow-[0_0_0_4px_rgba(103,232,249,0.08)];
+  }
+
+  .template-card {
+    @apply rounded-3xl border border-white/10 bg-white/[0.045] p-4 shadow-line transition hover:-translate-y-1 hover:border-cyan-200/35 hover:bg-white/[0.075];
+  }
+
+  .template-card-active {
+    @apply border-cyan-200/45 bg-cyan-200/[0.095] shadow-[0_0_44px_rgba(34,211,238,0.12)];
+  }
+
+  .icon-button {
+    @apply grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/[0.07] text-slate-200 shadow-line transition hover:border-cyan-200/35 hover:bg-cyan-200/[0.12] hover:text-white;
+  }
+}
+
+.soft-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at center, black, transparent 74%);
+}
+
+.shine-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.shine-button::after {
+  position: absolute;
+  inset: -40% auto -40% -70%;
+  z-index: -1;
+  width: 55%;
+  content: "";
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.36), transparent);
+  transition: transform 0.65s ease;
+}
+
+.shine-button:hover::after {
+  transform: translateX(280%) skewX(-18deg);
+}
+
+.magnetic-card {
+  transform-style: preserve-3d;
+}
+
+.preview-prose {
+  overflow-wrap: anywhere;
+}
+
+.preview-prose > *:first-child {
+  margin-top: 0;
+}
+
+.preview-prose > *:last-child {
+  margin-bottom: 0;
+}
+
+input[type="checkbox"] {
+  accent-color: #67e8f9;
+}
